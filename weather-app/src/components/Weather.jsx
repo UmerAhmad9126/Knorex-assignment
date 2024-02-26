@@ -16,7 +16,7 @@ const Weather = () => {
         }
     }
 
-    // console.log('weatherData:', weatherData);
+    console.log('weatherData:', weatherData);
     // console.log('city:', city)
 
     useEffect(() => {
@@ -32,6 +32,7 @@ const Weather = () => {
             <span>From: </span>
 
             <select onChange={(e) => setCity(e.target.value)}>
+                <option value="">Select City</option>
                 <option value={"Ho Chi Minh"}>Ho Chi Minh</option>
                 <option value={"Singapore"}>Singapore</option>
                 <option value={"Kuala Lumpur"}>Kuala Lumpur</option>
@@ -39,39 +40,38 @@ const Weather = () => {
                 <option value={"Athens"}>Athens</option>
             </select>
 
-            <div>
+            <div style={{
+                display: 'flex',
+                justifyContent: "space-around"
+            }}>
                 <div>
-                    <p>current weather</p>
-                    <p>Next three days</p>
+                    <h3>Current Weather</h3>
+                    <div>
+                        <p>Tempreture: {weatherData.list && weatherData.list[0].main.temp}C</p>
+                        <img src={weatherData.list && weatherData.list[0].weather.icon} />
+                    </div>
                 </div>
 
                 <div>
-                    {/* Day-1 */}
-                    <p>
-                        {weatherData || weatherData.list[0].main.temp}
-                    </p>
-                    <img src={weatherData || weatherData.list[0].weather.icon} />
+                    <h3>Next Three Days</h3>
 
-                    {/* Day-2 */}
-                    <p>
-                        {weatherData || weatherData.list[6].dt_txt}
-                        <img src={weatherData || weatherData.list[6].weather.icon} />
-                        {weatherData || weatherData.list[6].main.temp}
-                    </p>
+                    <div>
+                        <p>Date: {weatherData.list && weatherData.list[6].dt_txt}</p>
+                        <p>Tempreture: {weatherData.list && weatherData.list[6].main.temp}C</p>
+                        <img src={weatherData.list && weatherData.list[6].weather.icon} />
+                    </div>
 
-                    {/* Day-3 */}
-                    <p>
-                        {weatherData || weatherData.list[6].dt_txt}
-                        <img src={weatherData || weatherData.list[6].weather.icon} />
-                        {weatherData || weatherData.list[6].main.temp}
-                    </p>
+                    <div>
+                        <p>Date: {weatherData.list && weatherData.list[14].dt_txt}</p>
+                        <p>Tempreture: {weatherData.list && weatherData.list[14].main.temp}C</p>
+                        <img src={weatherData.list && weatherData.list[14].weather.icon} />
+                    </div>
 
-                    {/* day-4 */}
-                    <p>
-                        {weatherData || weatherData.list[6].dt_txt}
-                        <img src={weatherData || weatherData.list[6].weather.icon} />
-                        {weatherData || weatherData.list[6].main.temp}
-                    </p>
+                    <div>
+                        <p>Date: {weatherData.list && weatherData.list[22].dt_txt}</p>
+                        <p>Tempreture: {weatherData.list && weatherData.list[22].main.temp}C</p>
+                        <img src={weatherData.list && weatherData.list[22].weather.icon} />
+                    </div>
                 </div>
 
 
